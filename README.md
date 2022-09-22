@@ -1,4 +1,4 @@
-# lab2-bookStore
+# EIMT_RESERVELOCAL_FE
 
 This is a homework assignment for EIMT
 
