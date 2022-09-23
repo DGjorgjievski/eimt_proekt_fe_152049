@@ -1,3 +1,3 @@
-export { CardComponent } from "./Card/Card";
+export { TableItem } from "./TableItem/TableItem";
 export { Navigation } from "./Navigation/Navigation";
 export { TableComponent } from "./Table/Table";

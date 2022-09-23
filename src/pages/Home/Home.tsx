@@ -1,7 +1,8 @@
 import React from "react";
 import { makeStyles, createStyles, Box, Typography } from "@material-ui/core";
-import { CardComponent } from "../../components";
+import { TableItem } from "../../components";
 import { cardData } from "./Home.data";
+import { LocationsList } from "../../components/LocationsList/LocationsList";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -11,20 +12,15 @@ const useStyles = makeStyles(() =>
       display: "flex",
       justifyContent: "flex-start",
       alignItems: "center",
-      padding:"0 10% 0 10%",
+      padding: "0",
 
       "& h5": {
         color: "#000",
       },
     },
     booksContainer: {
-      maxWidth: "60vw",
-      margin: "0 auto",
       display: "flex",
-      flexDirection: "row",
-      flexWrap: "wrap",
-      justifyContent: "space-around",
-      marginTop: "40px",
+      flexDirection: "column",
     },
   })
 );
@@ -32,19 +28,12 @@ const useStyles = makeStyles(() =>
 export const Home = () => {
   const classes = useStyles();
   return (
-    <Box>
+    <Box style={{ padding: "0 10% 0 10%" }}>
       <Box className={classes.mainSection}>
         <Typography variant="h5">List of registered locals</Typography>
       </Box>
       <Box className={classes.booksContainer}>
-        {cardData.map((local: any) => (
-          <CardComponent
-            title={local.name}
-            content={local.location}
-            image={local.image}
-            id={local.id}
-          />
-        ))}
+        <LocationsList />
       </Box>
     </Box>
   );

@@ -22,37 +22,57 @@ const useStyles = makeStyles(() =>
         color: "grey",
       },
     },
-    navLinks:{
-      width:'100%',
-      maxWidth:'350px',
+    navLinks: {
+      width: "100%",
+      maxWidth: "350px",
       display: "flex",
-      justifyContent: "space-around",      
+      justifyContent: "space-around",
     },
-    col6:{
-      width:'100%',
-      maxWidth:'40%',
-    }
+    col6: {
+      width: "100%",
+      maxWidth: "40%",
+    },
   })
 );
 
 export const Navigation = () => {
+  const tempUserName = localStorage.getItem("userName");
+  const clearLocalStorage = () => {
+    localStorage.setItem("userID", "");
+    localStorage.setItem("userName", "");
+    localStorage.setItem("userEmail", "");
+    localStorage.setItem("points", "");
+  };
   const classes = useStyles();
   return (
     <Box className={classes.menuContainer}>
       <Link href="/">
         <Box>
-          <img src="logo_transparent.png" width={150} height={150} alt="logo"></img>
+          <img
+            src="logo_transparent.png"
+            width={150}
+            height={150}
+            alt="logo"
+          ></img>
         </Box>
       </Link>
-      <Box className={classes.navLinks}>
-        <Link href="/books" className="col6">
-          {/* name of the logged in user */}
-          <Typography variant="h6">User name</Typography> 
-        </Link>
-        <Link href="/logout" className={classes.col6}>
-          <Typography variant="h6">logout</Typography> 
-        </Link>
-      </Box>
+      {tempUserName != "" ? (
+        <Box className={classes.navLinks}>
+          <Link href="/user" className="col6">
+            {/* name of the logged in user */}
+            <Typography variant="h6">{tempUserName}</Typography>
+          </Link>
+          <Link
+            href="/login"
+            className={classes.col6}
+            onClick={() => clearLocalStorage()}
+          >
+            <Typography variant="h6">logout</Typography>
+          </Link>
+        </Box>
+      ) : (
+        <Box></Box>
+      )}
     </Box>
   );
 };
