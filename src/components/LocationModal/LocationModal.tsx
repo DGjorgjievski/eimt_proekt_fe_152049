@@ -41,7 +41,6 @@ const useStyles = makeStyles(() =>
 
 export const LocationModal = (props: ILocationModal) => {
   const classes = useStyles();
-  const userID = localStorage.getItem("UserID");
   const methods = useForm({
     reValidateMode: "onSubmit",
   });
@@ -81,7 +80,8 @@ export const LocationModal = (props: ILocationModal) => {
     // numberOfTables: number,
     // dateTime: Date,
     // isConfirmed: boolean
-
+    var test = localStorage.getItem("userID");
+    var userID = Number(test);
     const formData = {
       userId: userID,
       localName: props?.location?.name || "",

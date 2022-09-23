@@ -25,21 +25,25 @@ const useStyles = makeStyles(() =>
 );
 
 export const User = () => {
+  var tmpuserID = localStorage.getItem("userID");
+  const [userId] = useState(tmpuserID);
   const [isVisible, setIsVisible] = useState(false);
   const [userReservation, setuserReservation] =
     useState<UserReservation | null>(null);
   const [retrievedData, setRetrievedData] = useState<any>(null);
 
   useEffect(() => {
-    getUserReservations().then((res) => setRetrievedData(res));
-  }, []);
+    getUserReservations(userId).then((res) => setRetrievedData(res));
+    setuserReservation(retrievedData);
+  }, [retrievedData]);
 
   const handleChanges = () => {
     setRetrievedData(null);
   };
   useEffect(() => {
-    getUserReservations().then((res) => setRetrievedData(res));
+    getUserReservations(userId).then((res) => setRetrievedData(res));
   }, [retrievedData]);
+
   const classes = useStyles();
   const userName = localStorage.getItem("userName");
   const userPoints = localStorage.getItem("points");

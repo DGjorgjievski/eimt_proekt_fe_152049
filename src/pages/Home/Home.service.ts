@@ -26,9 +26,9 @@ export const makeReservation = async (data: any) => {
   }
 };
 
-export const getUserReservations = async () => {
+export const getUserReservations = async (data: any) => {
   try {
-    var url = `${API}/users/1/reservations`;
+    var url = `${API}/users/${data}/reservations`;
     const response = await axios.get(url);    
     return response.data;
   } catch (error: any) {
